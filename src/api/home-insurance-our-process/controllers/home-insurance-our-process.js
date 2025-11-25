@@ -8,6 +8,7 @@ const { createCoreController } = require('@strapi/strapi').factories;
 
 module.exports = createCoreController('api::home-insurance-our-process.home-insurance-our-process', ({strapi}) => ({
     
+
   async find(ctx) {
 
         const data = await strapi.entityService.findMany('api::home-insurance-our-process.home-insurance-our-process', {

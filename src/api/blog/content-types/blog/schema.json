@@ -42,6 +42,13 @@
       "type": "uid",
       "targetField": "flag",
       "required": true
+    },
+    "blogs_detailed_view": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::blogs-detailed-view.blogs-detailed-view",
+      "private": true,
+      "inversedBy": "blog"
     }
   }
 }

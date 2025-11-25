@@ -496,6 +496,11 @@ export interface ApiBlogBlog extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
+    blogs_detailed_view: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::blogs-detailed-view.blogs-detailed-view'
+    > &
+      Schema.Attribute.Private;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -510,6 +515,37 @@ export interface ApiBlogBlog extends Struct.CollectionTypeSchema {
     publishedAt: Schema.Attribute.DateTime;
     slug: Schema.Attribute.UID<'flag'> & Schema.Attribute.Required;
     title: Schema.Attribute.String & Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiBlogsDetailedViewBlogsDetailedView
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'blogs_detailed_views';
+  info: {
+    displayName: 'Blogs-Detailed-View';
+    pluralName: 'blogs-detailed-views';
+    singularName: 'blogs-detailed-view';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    blog: Schema.Attribute.Relation<'oneToOne', 'api::blog.blog'> &
+      Schema.Attribute.Private;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    detailed_view: Schema.Attribute.RichText & Schema.Attribute.Required;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::blogs-detailed-view.blogs-detailed-view'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1458,6 +1494,7 @@ declare module '@strapi/strapi' {
       'admin::user': AdminUser;
       'api::about.about': ApiAboutAbout;
       'api::blog.blog': ApiBlogBlog;
+      'api::blogs-detailed-view.blogs-detailed-view': ApiBlogsDetailedViewBlogsDetailedView;
       'api::client-intake-form.client-intake-form': ApiClientIntakeFormClientIntakeForm;
       'api::contact-information.contact-information': ApiContactInformationContactInformation;
       'api::contact.contact': ApiContactContact;

@@ -24,12 +24,14 @@ module.exports = createCoreController('api::blog.blog', ({strapi}) => ({
               month: "short",
               day: "2-digit",
               year: "numeric",
-            })
-          : null,
-      }));
+            }) 
+          : null, 
+      })); 
         // Return the first item directly, or null if no data exists
         return {data :formattedRelatedBlogs} ; 
     },
   
 
 }));
+
+

@@ -1,0 +1,26 @@
+{
+  "kind": "collectionType",
+  "collectionName": "blogs_detailed_views",
+  "info": {
+    "singularName": "blogs-detailed-view",
+    "pluralName": "blogs-detailed-views",
+    "displayName": "Blogs-Detailed-View"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "detailed_view": {
+      "type": "richtext",
+      "required": true
+    },
+    "blog": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::blog.blog",
+      "private": true,
+      "mappedBy": "blogs_detailed_view"
+    }
+  }
+}

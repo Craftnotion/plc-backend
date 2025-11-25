@@ -27,8 +27,6 @@ module.exports = createCoreController('api::client-intake-form.client-intake-for
 
 
         // Send notification email to admin
-
-            // Send admin notification email
     try {
         await strapi.plugins['email'].services.email.send({
             to: 'admin@plc-consultants.com', // Replace with your admin email
